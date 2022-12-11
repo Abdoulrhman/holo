@@ -1,0 +1,38 @@
+@import '../../assets/styles/_colors.scss';
+@import '../../assets/styles/_mixins.scss';
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+.app-wrapper {
+  margin: 0 auto;
+  padding: 0px 20px;
+  max-width: 1200px;
+  display: flex;
+  height: 100vh;
+
+  &.hide-height {
+    height: auto;
+    padding: 20px;
+  }
+  .app-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    // margin-top: 1rem;
+  }
+}
