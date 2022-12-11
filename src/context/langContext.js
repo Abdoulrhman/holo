@@ -44,8 +44,11 @@ const NoConnection = () => (
     style={{
       color: "red",
       position: "absolute",
-      right: "50%",
-      fontSize: "24px",
+      top: "0",
+      bottom: "0",
+      right: "0",
+      left: "0",
+      margin: "auto",
     }}
   >
     <p>App Currently offline </p>
