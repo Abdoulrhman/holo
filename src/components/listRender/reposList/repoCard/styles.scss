@@ -12,6 +12,18 @@
   transition: all 0.3s ease;
   margin: 8px 0px;
   cursor: pointer;
+  position: relative;
+  .label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgb(38, 64, 180);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 0 0 1rem 0;
+  }
   &:hover {
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   }
@@ -69,6 +81,20 @@
     &:hover {
       background-color: #fff;
       color: #000;
+    }
+  }
+}
+
+.dark-theme {
+  .label {
+    background-color: rgb(38, 64, 180);
+  }
+  .github-card__button {
+    background-color: #fff;
+    color: #000;
+    &:hover {
+      background-color: #000;
+      color: #fff;
     }
   }
 }

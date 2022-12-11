@@ -1,11 +1,15 @@
-import React, { useContext, useEffect } from 'react';
-import { AppContext } from '../../context/dataContext';
+import React, { useContext } from 'react';
+import { SEARCH } from '../../constants/translations';
+import { AppContext } from '../../context/appContext';
+import { LangContext } from '../../context/langContext';
 import { useAppDispatch } from '../../store/hooks';
 import { addRecentSearch } from '../../store/recentSearch';
 
 const Input: React.FC = () => {
   const { appConfig, searchWord, setAppConfig } = useContext(AppContext);
   const dispatch = useAppDispatch();
+  const { translate } = useContext(LangContext);
+
 
   const handleAddRecentSearch = (e: any) => {
     if (e.target.value !== '') {
@@ -30,8 +34,8 @@ const Input: React.FC = () => {
         })
       }
       value={searchWord}
-      type="text"
-      placeholder="Start typing to search .."
+      type="search"
+      placeholder={translate(SEARCH)}
     />
   );
 };

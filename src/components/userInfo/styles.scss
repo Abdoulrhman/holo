@@ -1,0 +1,48 @@
+.github-user-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  width: 400px;
+  text-align: center;
+  .github-user-card__avatar {
+    img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+    }
+  }
+  .github-user-card__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .github-user-card__name {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .github-user-card__bio {
+      font-size: 16px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+    .github-user-card__location {
+      font-size: 16px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+    .github-user-card__link {
+      font-size: 16px;
+      font-weight: 400;
+      margin-bottom: 10px;
+      a {
+        color: #0366d6;
+        text-decoration: none;
+      }
+    }
+  }
+}

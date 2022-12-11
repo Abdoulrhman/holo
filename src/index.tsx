@@ -6,12 +6,14 @@ import reportWebVitals from './reportWebVitals';
 
 import { Provider } from 'react-redux';
 
-import { AppProvider } from './context/dataContext';
+import { AppProvider } from './context/appContext';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
 
 import store from './store';
+import { LangProvider } from './context/langContext';
+import { ThemeProvider } from './context/themeContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -26,7 +28,11 @@ root.render(
           persistor={persistStore(store)}
         >
           <AppProvider>
-            <App />
+            <ThemeProvider>
+              <LangProvider>
+                <App />
+              </LangProvider>
+            </ThemeProvider>
           </AppProvider>
         </PersistGate>
       </Provider>

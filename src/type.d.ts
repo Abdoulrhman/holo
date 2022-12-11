@@ -30,6 +30,10 @@ type GithubSearch = {
   page: number;
 };
 
+type GithubUser = {
+  username: string;
+};
+
 type GithubRepoState = {
   loading: boolean;
   repos: IGithubRepo[];

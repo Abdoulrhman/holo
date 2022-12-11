@@ -1,5 +1,5 @@
-@import '../../assets/styles/_colors.scss';
-@import '../../assets/styles/_mixins.scss';
+@import "../../assets/styles/_colors.scss";
+@import "../../assets/styles/_mixins.scss";
 
 .header-wrapper {
   width: 100%;
@@ -19,11 +19,33 @@
       align-items: center;
       margin-bottom: 16px;
       .header-title-right {
-        :nth-child(1) {
-          @include font(20px, 700, $dark);
+        display: flex;
+        gap: 1rem;
+        .actions {
+          display: flex;
+          align-items: flex-end;
+          gap: 1rem;
+          .lang-icon {
+            margin-inline-start: 10px;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+            padding: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+          .theme-icon {
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+            padding: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+          }
         }
-        :nth-child(2) {
-          @include font(14px, 400, $secondary-dark);
+        .titles {
+          :nth-child(1) {
+            @include font(20px, 700, $dark);
+          }
+          :nth-child(2) {
+            @include font(14px, 400, $secondary-dark);
+          }
         }
       }
     }
@@ -60,6 +82,7 @@
       width: 95%;
       position: absolute;
       background-color: $white;
+      z-index: 999;
       .recent-searches-header {
         display: flex;
         align-items: center;
@@ -102,6 +125,106 @@
             :nth-child(2) {
               color: $dark;
             }
+          }
+        }
+      }
+    }
+  }
+}
+
+.dark-theme {
+  .header-wrapper {
+    .header-content {
+      .header-title {
+        .header-title-right {
+          .titles {
+            :nth-child(1) {
+              color: $white;
+            }
+            :nth-child(2) {
+              color: $secondary-light;
+            }
+          }
+          .actions {
+            .lang-icon {
+              background-color: $dark;
+              color: $white;
+              border: 1px solid $white;
+            }
+            .theme-icon {
+              background-color: $dark;
+              color: $white;
+              border: 1px solid $white;
+            }
+          }
+        }
+      }
+      .header-actions {
+        input {
+          border: 1px solid $white;
+          background-color: $dark;
+          color: $white;
+        }
+        select {
+          border: 1px solid $white;
+          color: $white;
+          background-color: $dark;
+          background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23ffffff" d="M7 10l5 5 5-5z"/></svg>');
+        }
+      }
+      .recent-searches {
+        border: 1px solid $dark;
+        .recent-searches-header {
+          .recent-searches-clear {
+            color: $white;
+          }
+        }
+        .recent-searches-list {
+          .recent-searches-list-item {
+            &:hover {
+              :nth-child(2) {
+                color: $white;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+html[dir="rtl"] {
+  .header-wrapper {
+    .header-content {
+      .header-title {
+        .header-title-right {
+          .actions {
+            flex-direction: row-reverse;
+            .lang-icon {
+              margin-inline-start: 0px;
+              margin-inline-end: 10px;
+            }
+          }
+        }
+      }
+      .header-actions {
+        select {
+          margin-left: 0px;
+          margin-right: 10px;
+          background-position: left 10px top 50%;
+        }
+      }
+      .recent-searches {
+        background-color: $dark;
+        border: 1px solid $white;
+        .recent-searches-header {
+          .recent-searches-clear {
+            justify-content: flex-start;
+          }
+        }
+        .recent-searches-list {
+          .recent-searches-list-item {
+            margin: 0px 20px;
           }
         }
       }

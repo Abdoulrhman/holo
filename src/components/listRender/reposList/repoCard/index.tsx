@@ -8,6 +8,7 @@ type Props = {
 const Card: React.FC<Props> = ({ repo }) => {
   return (
     <div className="github-card">
+      <span className='label'>Repo</span>
       <div className="github-card__avatar">
         <img
           src={repo?.owner?.avatar_url}

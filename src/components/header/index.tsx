@@ -1,16 +1,19 @@
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useContext, useRef } from 'react';
+
 import GithubIcon from '../../assets/github.svg';
-import { AppContext } from '../../context/dataContext';
+import { AppContext } from '../../context/appContext';
 import Input from '../input';
 import Select from '../select';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import useOutsideAlerter from '../../hooks/useOutsideAlerter';
 import {
   removeRecentSearch,
   clearRecentSearch,
 } from '../../store/recentSearch';
-
 import './styles.scss';
-import useOutsideAlerter from '../../hooks/useOutsideAlerter';
+import { LangContext } from '../../context/langContext';
+import { CLEAR_ALL, GITHUB_SEARCHER, RECENT_SEARCHES, SEARCH_USERS } from '../../constants/translations';
+import { ThemeContext } from '../../context/themeContext';
 
 const Header: React.FC = () => {
   const {
@@ -21,6 +24,8 @@ const Header: React.FC = () => {
     searchWord,
   } = useContext(AppContext);
   const recentSearches = useAppSelector((state) => state.recentSearches);
+  const { changeLang, lang, translate } = useContext(LangContext);
+  const { useDarkTheme, setUseDarkTheme } = useContext(ThemeContext);
   const { recentSearch } = recentSearches;
   const dispatch = useAppDispatch();
 
@@ -35,9 +40,9 @@ const Header: React.FC = () => {
     });
   });
 
-  useEffect(() => {
-    console.log('appConfig', appConfig);
-  }, [appConfig]);
+  const handleThemeChange = () => {
+    setUseDarkTheme(!useDarkTheme);
+  };
 
   const handleRemoveRecentSearch = (search: string) => {
     dispatch(removeRecentSearch(search));
@@ -66,8 +71,19 @@ const Header: React.FC = () => {
             />
           </div>
           <div className="header-title-right">
-            <p>Github Searcher </p>
-            <p>Search Users or Repositories below</p>
+            <div className='titles'>
+              <p>{translate(GITHUB_SEARCHER)} </p>
+              <p>{translate(SEARCH_USERS)}</p>
+            </div>
+            <div className='actions' >
+              <span className='lang-icon' onClick={lang === "en" ? () => changeLang("ar") : () => changeLang("en")} >
+                &#127760;
+              </span>
+              <span className='theme-icon' onClick={handleThemeChange}>
+                &#127769;
+              </span>
+            </div>
+
           </div>
         </div>
         <div className="header-actions">
@@ -80,12 +96,14 @@ const Header: React.FC = () => {
             ref={wrapperRef}
           >
             <div className="recent-searches-header">
-              <p className="recent-searches-title">Recent Searches</p>
+              <p className="recent-searches-title">
+                {translate(RECENT_SEARCHES)}
+              </p>
               <p
                 className="recent-searches-clear"
                 onClick={handleClearRecentSearch}
               >
-                Clear All
+                {translate(CLEAR_ALL)}
               </p>
             </div>
 

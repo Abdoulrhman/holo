@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   const [appConfig, setAppConfig] = useState({
-    searchWord: '',
+    searchWord: "",
     isInputTouched: false,
     isRecentSearchesActive: false,
-    selectedOption: 'users',
+    selectedOption: "users",
+    selectedUser: null,
+    selectedRepo: null,
     page: 1,
   });
 
@@ -17,6 +19,8 @@ const AppProvider = ({ children }) => {
     selectedOption,
     page,
     isRecentSearchesActive,
+    selectedUser,
+    selectedRepo,
   } = appConfig;
 
   const isDataFetched = isInputTouched && searchWord.length >= 3;
@@ -32,6 +36,8 @@ const AppProvider = ({ children }) => {
         selectedOption,
         page,
         isDataFetched,
+        selectedUser,
+        selectedRepo,
       }}
     >
       {children}

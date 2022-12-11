@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 
 import Header from '../../components/header';
-import { AppContext } from '../../context/dataContext';
+import { AppContext } from '../../context/appContext';
 import ListRender from '../../components/listRender';
 
 const Home = () => {

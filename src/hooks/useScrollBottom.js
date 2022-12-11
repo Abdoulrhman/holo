@@ -1,21 +1,21 @@
-import { useEffect } from 'react';
+// utils/usePageBottom.js
+import React from "react";
 
-const useScrollBottom = (onScrollBottom) => {
-  const node = document.getElementById('scroll-view');
-  const onScroll = (e) => {
-    const isBottom =
-      e.target.scrollHeight - e.target.scrollTop - 10 < e.target.clientHeight;
+export default function usePageBottom() {
+  const [bottom, setBottom] = React.useState(false);
 
-    if (isBottom) {
-      onScrollBottom();
+  React.useEffect(() => {
+    function handleScroll() {
+      const isBottom =
+        window.innerHeight + document.documentElement.scrollTop ===
+        document.documentElement.offsetHeight;
+      setBottom(isBottom);
     }
-  };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
-  useEffect(() => {
-    node && node.addEventListener('scroll', onScroll);
-
-    return () => node && node.removeEventListener('scroll', onScroll);
-  }, [onScroll]);
-};
-
-export default useScrollBottom;
+  return bottom;
+}

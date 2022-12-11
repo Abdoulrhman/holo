@@ -1,5 +1,5 @@
-@import '../../assets/styles/_colors.scss';
-@import '../../assets/styles/_mixins.scss';
+@import "../../assets/styles/_colors.scss";
+@import "../../assets/styles/_mixins.scss";
 html,
 body {
   margin: 0;
@@ -34,5 +34,14 @@ p {
     align-items: center;
     gap: 1rem;
     // margin-top: 1rem;
+  }
+}
+
+.dark-theme {
+  background-color: $dark;
+  color: $white;
+  .app-wrapper {
+    background-color: $dark;
+    color: $white;
   }
 }

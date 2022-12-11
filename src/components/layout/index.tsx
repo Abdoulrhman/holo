@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { AppContext } from '../../context/dataContext';
+import { AppContext } from '../../context/appContext';
 
 import './styles.scss';
 
