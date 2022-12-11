@@ -1,4 +1,4 @@
-# React App Task For WorkMotion
+# React App Task For Holo
 
 ## Install Packages
 
